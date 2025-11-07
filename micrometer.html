@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tweakpane@3.1.0/dist/tweakpane.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/tweakpane@3.1.0/dist/tweakpane.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -99,22 +99,22 @@
         const itemsToLoad = 4;
         //gauge variables
         var imgThimble = new Image();
-        imgThimble.src = "../assets/thimble.png"
+        imgThimble.src = "thimble.png"
         imgThimble.onload = itemloaded;
         var imgSpindle = new Image();
-        imgSpindle.src = "../assets/spindle.png"
+        imgSpindle.src = "spindle.png"
         imgSpindle.onload = itemloaded;
         var imgBase = new Image();
-        imgBase.src = "../assets/micrometer_base.png"
+        imgBase.src = "micrometer_base.png"
         imgBase.onload = itemloaded;
         var imgTexture = new Image();
-        imgTexture.src = "../assets/texture9.png"
+        imgTexture.src = "texture9.png"
         imgTexture.onload = itemloaded;
         var imgSimphy = new Image();
         var textPattern = null;
         var gradient = null;
 
-        var tickSound = new Audio("../tick.wav");
+        var tickSound = new Audio("tick.wav");
         tickSound.onload = itemloaded;
 
         const scaleOriginX = 539;
