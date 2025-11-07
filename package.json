@@ -1,0 +1,32 @@
+{
+  "name": "micrometer-fullstack-app",
+  "version": "1.0.0",
+  "description": "Complete Micrometer Virtual Laboratory - React + Node.js Full-Stack Application",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm start",
+    "build": "cd client && npm run build",
+    "start": "cd server && npm start",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install"
+  },
+  "keywords": [
+    "micrometer",
+    "physics",
+    "education", 
+    "measurement",
+    "laboratory",
+    "react",
+    "nodejs",
+    "express"
+  ],
+  "author": "Virtual Lab Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}

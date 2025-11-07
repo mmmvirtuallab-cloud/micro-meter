@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sine Bar Virtual Lab — Quiz</title>
+<style>
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f6f9fc;
+    margin: 0;
+    color: #111;
+  }
+  header {
+    background: #0b63d3;
+    color: white;
+    padding: 25px;
+    text-align: center;
+  }
+  h1 { margin: 0; }
+  main {
+    max-width: 800px;
+    margin: 30px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  h2 { margin-top: 0; }
+  .question {
+    background: #f9fbfe;
+    border: 1px solid #e1e6ef;
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+  }
+  label {
+    display: block;
+    margin: 4px 0;
+    cursor: pointer;
+  }
+  button {
+    background: #0b63d3;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  button:hover { background: #084ca6; }
+  #score {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 18px;
+  }
+  .correct {
+    background-color: #d4edda;
+    border-color: #28a745;
+  }
+  .incorrect {
+    background-color: #f8d7da;
+    border-color: #dc3545;
+  }
+  footer {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+  }
+
+  /* ✅ New style for the virtual lab button */
+  #labBtn {
+    display: none;
+    margin-top: 14px;
+    background: #10b981;
+  }
+  #labBtn:hover {
+    background: #0d946b;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Virtual Lab Quiz — Measurement of Taper Angle using Sine Bar</h1>
+  <p>Test your understanding before performing the experiment</p>
+</header>
+
+<main>
+  <form id="quizForm">
+    <h2>Answer all questions below:</h2>
+
+    <div class="question" id="q1">
+      <p>1️⃣ The principle of a micrometer is based on:
+</p>
+      <label><input type="radio" name="q1" value="a">Lever principle
+ </label>
+      <label><input type="radio" name="q1" value="b">Screw and nut principle
+</label>
+      <label><input type="radio" name="q1" value="c">Hydraulic principle
+</label>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2️⃣ The least count of a standard metric micrometer is:
+</p>
+      <label><input type="radio" name="q2" value="a">0.1 mm
+ </label>
+      <label><input type="radio" name="q2" value="b">0.01 mm
+ </label>
+      <label><input type="radio" name="q2" value="c">0.05 mm
+</label>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3️⃣ The ratchet stop in a micrometer is used to:
+</p>
+      <label><input type="radio" name="q3" value="a">Lock the spindle
+</label>
+      <label><input type="radio" name="q3" value="b">Maintain uniform pressure while measuring</label>
+      <label><input type="radio" name="q3" value="c">Increase the range
+</label>
+    </div>
+
+    <div class="question" id="q4">
+      <p>4️⃣The part of a micrometer that is fixed is called:
+ </p>
+      <label><input type="radio" name="q4" value="a">Spindle</label>
+      <label><input type="radio" name="q4" value="b">Frame</label>
+      <label><input type="radio" name="q4" value="c">Anvil</label>
+    </div>
+
+    <div class="question" id="q5">
+      <p>5️⃣The formula to find total reading of micrometer is:
+</p>
+      <label><input type="radio" name="q5" value="a"> Total = MSR × TSR
+</label>
+      <label><input type="radio" name="q5" value="b">Total = MSR + TSR
+</label>
+      <label><input type="radio" name="q5" value="c"> Total = MSR + (TSR × Least Count)
+</label>
+    </div>
+
+    <button type="button" onclick="checkAnswers()">Submit Quiz</button>
+
+    <!-- ✅ Added Go to Lab Button -->
+    <button type="button" id="labBtn" onclick="goToLab()">Go to Virtual Lab</button>
+
+    <p id="score"></p>
+  </form>
+</main>
+
+<footer>
+  © Virtual Lab | Measurement of Thickness and outside diameter by outside micrometer
+</footer>
+
+<script>
+function checkAnswers() {
+  // correct answers
+  const answers = { q1: "b", q2: "b", q3: "b", q4: "c", q5: "c" };
+  let score = 0;
+
+  // reset background
+  document.querySelectorAll('.question').forEach(div => {
+    div.classList.remove('correct', 'incorrect');
+  });
+
+  // check each
+  for (let key in answers) {
+    const div = document.getElementById(key);
+    const selected = document.querySelector(`input[name="${key}"]:checked`);
+    if (selected) {
+      if (selected.value === answers[key]) {
+        score++;
+        div.classList.add('correct');
+      } else {
+        div.classList.add('incorrect');
+      }
+    } else {
+      div.classList.add('incorrect');
+    }
+  }
+
+  // display score
+  const scoreText = document.getElementById('score');
+  const labBtn = document.getElementById('labBtn');
+
+  if (score === 5) {
+    scoreText.textContent = `Excellent! 🎯 You scored ${score}/5.`;
+    scoreText.style.color = "#28a745";
+    labBtn.style.display = 'inline-block'; // ✅ show button only when all correct
+  } else if (score >= 3) {
+    scoreText.textContent = `Good job! You scored ${score}/5. Review the incorrect ones.`;
+    scoreText.style.color = "#0b63d3";
+    labBtn.style.display = 'none'; // ❌ hide button
+  } else {
+    scoreText.textContent = `You scored ${score}/5. Please review the theory and try again.`;
+    scoreText.style.color = "#dc3545";
+    labBtn.style.display = 'none'; // ❌ hide button
+  }
+}
+
+// ✅ Function to go to lab
+function goToLab() {
+  window.location.href = "micrometer.html"; // Change to your actual lab file name
+}
+
+</script>
+</body>
+</html>
