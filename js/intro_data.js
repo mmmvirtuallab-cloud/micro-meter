@@ -21,9 +21,9 @@ export const INTRO_CONTENT = {
     
     // Student List
     students: [
-        "Mothinath G - 2023507009",
-        "Madusudarsanan J-2023507021",
-        "Prabakaran K -2023507302",
-        "Venugopal R-2023507307"
+        { name: "Mothinath G", roll: "2023507009", image: "../studentimages/2023507009.jpg" },
+        { name: "Madusudarsanan J", roll: "2023507021", image: "../studentimages/2023507021.jpg" },
+        { name: "Prabakaran K", roll: "2023507302", image: "../studentimages/2023507302.jpg" },
+        { name: "Venugopal R", roll: "2023507307", image: "../studentimages/2023507307.jpg" }
     ]
 };
